@@ -1,0 +1,79 @@
+<MainScreen>:
+    #: import time __main__.time
+
+    name: 'main'
+    stepper_motor_button: stepper_motor_button
+    ross_for_life: ross_for_life
+    macys_price_inflation: macys_price_inflation
+    stan_sears: stan_sears
+
+
+    FloatLayout:
+        size_hint: None, None
+
+    DPEAButton:
+        id: stepper_motor_button
+        text: "macys"
+        size: 300, 300
+        x: root.width * 0.15
+        y: root.height * 0.4
+        on_press: root.start_stepper()
+        on_release: root.stop_stepper()
+        color: 92/255, 29/255, 43/255, 1
+
+    DPEAButton:
+        id: reverse_motor_button
+        text: "ross"
+        size: 300, 300
+        x: root.width * 0.42
+        y: root.height * 0.4
+        on_press: root.start_reverse_stepper()
+        on_release: root.stop_reverse_stepper()
+        color: 29/255, 67/255, 92/255, 1
+
+    DPEAButton:
+        id: reverse_motor_button
+        text: "sears"
+        size: 300, 300
+        x: root.width * 0.68
+        y: root.height * 0.4
+        on_press: root.sears_thread()
+        color: 29/255, 92/255, 78/255, 1
+
+    Slider:
+        id: macys_price_inflation
+        size_hint: 1,.2
+        min: 1
+        value: 2
+        max: 10
+        step: 1
+        orientation: 'horizontal'
+        on_value: root.slide_speed()
+
+    Label:
+        id: ross_for_life
+        size_hint: None, None
+        font_size: 50
+        text : str(macys_price_inflation.value)
+        center_x: root.width * 0.5
+        center_y: root.height * 0.2
+        color: 1, 1, 1, 1
+        bold: True
+        outline_width: self.font_size * 0.1
+        outline_color: 0, 0, 0
+
+    Label:
+        id: stan_sears
+        size_hint: None, None
+        font_size: 50
+        text : "0"
+        center_x: root.width * 0.5
+        center_y: root.height * 0.85
+        color: 1, 1, 1, 1
+        bold: True
+        outline_width: self.font_size * 0.1
+        outline_color: 0, 0, 0
+
+
+
+
